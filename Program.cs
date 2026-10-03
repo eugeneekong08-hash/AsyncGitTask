@@ -49,3 +49,6 @@ Console.WriteLine(await messagesTask);
 
 stopwatchB.Stop();
 Console.WriteLine("Task B total time: " + stopwatchB.Elapsed.TotalSeconds + " seconds");
+
+double timeDifference = stopwatchA.Elapsed.TotalSeconds - stopwatchB.Elapsed.TotalSeconds;
+Console.WriteLine("Time difference between Task A and Task B: " + timeDifference + " seconds");
