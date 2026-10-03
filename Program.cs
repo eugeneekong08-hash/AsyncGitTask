@@ -20,6 +20,12 @@ async Task<string> GetMessagesAsync()
     return "Messages loaded";
 }
 
+async Task<string> GetPaymentsAsync()
+{
+    await Task.Delay(1000);
+    throw new InvalidOperationException("Payment service unavailable");
+}
+
 Stopwatch stopwatchA = new Stopwatch();
 stopwatchA.Start();
 
@@ -52,3 +58,13 @@ Console.WriteLine("Task B total time: " + stopwatchB.Elapsed.TotalSeconds + " se
 
 double timeDifference = stopwatchA.Elapsed.TotalSeconds - stopwatchB.Elapsed.TotalSeconds;
 Console.WriteLine("Time difference between Task A and Task B: " + timeDifference + " seconds");
+
+try
+{
+    string paymentsResult = await GetPaymentsAsync();
+    Console.WriteLine(paymentsResult);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Payments could not be processed right now. Please try again later.");
+}
